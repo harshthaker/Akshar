@@ -9,7 +9,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#define FILE_PATH "/Users/hardikthaker/Desktop/bee.wav"
+#define FILE_PATH_BEE "/Users/bee.wav"
+#define FILE_PATH_BLOP "/Users/blop.wav"
 
 struct AudioData{
     
@@ -45,12 +46,22 @@ int main(int argc, const char * argv[]) {
     
     Uint32 wavLength; // length of the wav file
     
-    if (SDL_LoadWAV(FILE_PATH, &wavSpec, &wavStart, &wavLength) == NULL) {
-        
-        std::cerr << "Error:" << FILE_PATH << "Audio file couldn't be found" << std::endl;
-        return 1;
-    }
+     int a = 1;
     
+    if (a == 1) {
+        if (SDL_LoadWAV(FILE_PATH_BEE, &wavSpec, &wavStart, &wavLength) == NULL) {
+            
+            std::cerr << "Error:" << FILE_PATH_BEE << "Audio file couldn't be found" << std::endl;
+            return 1;
+        }
+    }
+    else{
+        if (SDL_LoadWAV(FILE_PATH_BLOP, &wavSpec, &wavStart, &wavLength) == NULL) {
+            
+            std::cerr << "Error:" << FILE_PATH_BLOP << "Audio file couldn't be found" << std::endl;
+            return 1;
+        }
+    }
     AudioData audio;
     audio.pos = wavStart;
     audio.length = wavLength;
